@@ -1,0 +1,146 @@
+
+<!--
+		put in dtor order
+		=> transform before anything else
+		=> render before entity/particles/...
+		=> collider before bodies
+		
+		if a component does not exist it does not affect the program
+		since it wont be created (it's not registered)
+		
+		the names here should be the same as the register
+		
+		components:
+			- position
+			- scale
+			- orientation
+			- speed
+			- forward
+			- playershootlifetime
+			- playercontrol
+			- lifespan
+			- render
+			- entity
+			- particles
+			- enemylifetime
+			- collider
+			- rigidbody
+			- collisions
+			- explosion
+			- sound2d
+			- sound3d
+			- soundlistener
+			- scenenodeanimation
+			- meshanimation
+		
+-->
+
+<gos>	
+	<go name="playership">
+		<components>
+			<component name="position"></component>
+			<component name="scale"></component>
+			<component name="orientation"></component>	
+			<component name="speed"></component>			
+			<component name="render"></component>
+			<component name="entity"></component>
+			<component name="playercontrol"></component>			
+			<component name="collider"></component>	
+			<component name="rigidbody"></component>
+			<component name="collisions"></component>
+		</components>
+	</go>
+	
+	<go name="ninja">
+		<components>
+			<component name="position"></component>
+			<component name="scale"></component>
+			<component name="orientation"></component>
+			<component name="speed"></component>
+			<component name="render"></component>
+			<component name="entity"></component>
+			<component name="ninjacontrol"></component>			
+			<component name="meshanimation"></component>
+		</components>
+	</go>	
+	
+	<go name="playershoot">
+		<components>
+			<component name="position"></component>
+			<component name="scale"></component>
+			<component name="orientation"></component>
+			<component name="speed"></component>			
+			<component name="render"></component>
+			<component name="entity"></component>
+			<component name="forward"></component>
+			<component name="playershootlifetime"></component>
+			<component name="collider"></component>	
+			<component name="rigidbody"></component>	
+			<component name="collisions"></component>
+			<component name="sound3d"></component>
+		</components>
+	</go>	
+	
+	<go name="enemyship">
+		<components>
+			<component name="position"></component>
+			<component name="scale"></component>
+			<component name="orientation"></component>
+			<component name="speed"></component>
+			<component name="render"></component>
+			<component name="entity"></component>
+			<!--<component name="forward"></component>-->
+			<component name="enemylifetime"></component>			
+			<component name="collider"></component>
+			<component name="rigidbody"></component>
+			<component name="collisions"></component>
+		</components>
+	</go>		
+	
+	<go name="object1">
+		<components>
+			<component name="position"></component>
+			<component name="scale"></component>
+			<component name="orientation"></component>
+			<component name="render"></component>
+			<component name="entity"></component>		
+			<component name="collider"></component>
+			<component name="rigidbody"></component>
+			<component name="collisions"></component>
+			<component name="speed"></component>
+		</components>
+	</go>		
+	
+	<go name="object_animnode">
+		<components>
+			<component name="position"></component>
+			<component name="scale"></component>
+			<component name="orientation"></component>
+			<component name="render"></component>
+			<component name="entity"></component>		
+			<component name="collider"></component>
+			<component name="rigidbody"></component>
+			<component name="collisions"></component>
+			<component name="scenenodeanimation"></component>
+		</components>
+	</go>	
+	
+	<go name="explosion">
+		<components>
+			<component name="position"></component>
+			<component name="scale"></component>		
+			<component name="render"></component>
+			<component name="explosion"></component>
+			<component name="sound3d"></component>
+		</components>
+	</go>
+	<go name="listener">
+		<components>
+			<component name="position"></component>
+			<component name="soundlistener"></component>		
+		</components>
+	</go>	
+</gos>
+
+
+		

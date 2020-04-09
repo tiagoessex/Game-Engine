@@ -1,0 +1,42 @@
+
+
+<!--
+	go descriptions should have the same name as go parameters
+-->
+
+<level id="1">
+	<gos>
+		<go name="playershoot">
+			<speed>30</speed>
+			<mesh>shoot.mesh</mesh>
+			<scale>3,3,3</scale>
+			<damagepower>10</damagepower>
+			<lifespan>2</lifespan>
+		</go>
+		<go name="player">
+			<forwardspeed>30</forwardspeed>
+			<rotationspeed>30</rotationspeed>
+			<health>100</health>
+			<mesh>player.mesh</mesh>
+		</go>
+		<go name="enemy">
+			<type>1</type>
+			<forwardspeed>30</forwardspeed>
+			<rotationspeed>30</rotationspeed>
+			<health>100</health>
+			<mesh>player.mesh</mesh>			
+		</go>
+	</gos>
+	<map>
+		<start>0,0,0</start>
+		<lifes>3</lifes>
+		<enemies>
+			<enemy type="1">10,10,10</enemy>
+			<enemy type="1">10,10,20</enemy>
+			<enemy type="1">10,10,30</enemy>
+			<enemy type="1">10,10,40</enemy>
+			<enemy type="1">10,10,50</enemy>
+		</enemies>
+	</map>
+</level>
+		

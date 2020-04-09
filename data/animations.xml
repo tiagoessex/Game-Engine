@@ -1,0 +1,69 @@
+
+
+
+<nodeanimations>	
+	<animation name="player">
+		<duration>4.0</duration>
+		<type>linear</type>
+		<loop>true</loop>
+		<frames>4</frames>		
+		<frame id="1">
+			<position>10,0,10</position>
+			<scale>1,1,1</scale>
+			<orientation>1,0,0,0</orientation>
+		</frame>
+		<frame id="2">
+			<position>-10,0,10</position>
+			<scale>1,1,1</scale>
+			<orientation>1,0,0,0</orientation>
+		</frame>
+		<frame id="3">
+			<position>-10,0,-10</position>
+			<scale>1,1,1</scale>
+			<orientation>1,0,0,0</orientation>
+		</frame>
+		<frame id="4">
+			<position>10,0,-10</position>
+			<scale>1,1,1</scale>
+			<orientation>1,0,0,0</orientation>
+		</frame>
+		<frame id="5">
+			<position>10,0,10</position>
+			<scale>1,1,1</scale>
+			<orientation>1,0,0,0</orientation>
+		</frame>		
+	</animation>
+			
+	<animation name="enemy">
+		<duration>10</duration>
+		<type>linear</type>
+		<loop>true</loop>
+		<frames>2</frames>
+		<frame id="1">
+			<position>10,20,30</position>
+			<scale>10,20,30</scale>
+			<orientation>0,10,20,30</orientation>
+		</frame>
+		<frame id="2">
+			<position>10,20,30</position>
+			<scale>10,20,30</scale>
+			<orientation>0,10,20,30</orientation>
+		</frame>	
+		<frame id="3">
+			<position>10,20,30</position>
+			<scale>10,20,30</scale>
+			<orientation>0,10,20,30</orientation>
+		</frame>
+		<frame id="4">
+			<position>10,20,30</position>
+			<scale>10,20,30</scale>
+			<orientation>0,10,20,30</orientation>
+		</frame>	
+		<frame id="5">
+			<position>10,20,30</position>
+			<scale>10,20,30</scale>
+			<orientation>0,10,20,30</orientation>
+		</frame>
+	</animation>			
+</nodeanimations>
+

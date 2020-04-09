@@ -1,0 +1,258 @@
+
+
+<!--
+	go descriptions should have the same name as go parameters
+	 - it has nothing to do with the name of the components but with
+	 the params:
+		ex: 
+			param["mesh"]			= "player.mesh";
+			param["position"]		= "0,10,0";	
+			param["orientation"]	= "1,0,0,0";	
+			param["speed"]			= "20.0";
+	
+	current parameters:
+		
+		
+		common:
+			- [name]				: string () - 
+		
+		
+		ComponentSpeed:
+			- [max_front_speed] 	: Scalar (0)
+			- [rotation_speed]		: Scalar (0)
+			- [initial_speed]		: Scalar (0)
+		
+		ComponentScale:
+			- [scale]				: Vec3 (1.0,1.0,1.0)
+			
+		ComponentPosition:
+			- [position]			: Vec3 (0,0,0)		
+			
+		ComponentOrientation:
+			- [orientation]			: Quat (1,0,0,0)
+								
+		ComponentForward:
+			- None
+			
+		ComponentLifespan:
+			- [lifespan]			: Scalar (0)		
+						
+		ComponentPlayerShootLifetime:
+			- None
+		
+		ComponentEnemyLifetime:
+			- None
+			
+			
+		ComponentRender: # (ComponentPosition | ComponentScale | ComponentOrientation | none)
+ 			- [manager]				: string
+			- [parent]				: string (not rootscenenode)			
+
+			
+	
+			
+				
+		ComponentEntity: # ComponentRender
+			- [mesh]				: string -- filename						
+			
+	
+			
+		ComponentCollider:
+			- collidershape					: string
+			--------
+			creation params:
+			- shape_box_dimensions
+			- shape_sphere_radius
+			- shape_plane_x / shape_plane_y
+			- shape_infplane_normal / shape_distance
+			- shape_cylinder_dimensions
+			- shape_cone_radius / shape_cone_height
+			- shape_capsule_radius / shape_capsule_height
+			- mesh / group
+		
+		
+		ComponentRigidBody: # ComponentCollider, (ComponentPosition | ComponentOrientation)
+			- opt:
+				- [kinematic]					: bool (false)
+				- [mass]						: Scalar (0 => static)
+				- [colgroup]					: short (-1 => none)
+				- [colmask]						: short (-1 => none)
+				---- mising masks ----
+				************
+				
+		ComponentCollisions:
+			- none
+			
+			
+			
+			
+		ComponentParticles:	 # ComponentRender
+			- [particles]						: string -- script
+			
+
+		ComponentExplosion:	 # ComponentRender
+			- [material]						: string -- script
+
+
+
+		ComponentSound2D
+			- [sound_name]						: string - filename
+			- opt:
+				- [sound_loop]					: bool (false)
+				- [sound_volume]				: Scalar (0.75)
+				- [sound_pan]					: Scalar (0.0)
+			
+
+		ComponentSound3D # ComponentPosition
+			- [sound_name]						: string - filename
+			- opt:
+				- [sound_loop]					: bool (false)
+				- [sound_volume]				: Scalar (0.75)
+				- [sound_pan]					: Scalar (0.0)
+			
+			
+		ComponentSoundListener # ComponentPosition
+			- opt:
+				- [listener_lookdir]			: Vec3(0,0,1)
+				- [velocity]					: Vec3(0,0,0)
+				- [listener_upvector]			: Vec3(0,1,0)
+			
+			
+			
+		ComponentSceneNodeAnimation  # ComponentRender
+			- [scenenodeanimation]					: string - name defined in animations.xml
+			
+			
+			
+		ComponentMeshAnimation # ComponentEntity
+			- [meshanimationstart]					: string - initial animation state name
+			- opt:
+				- [meshanimationloop]				: string (true)
+		
+		
+ex: 
+	static:
+		<shape_sphere_radius>5</shape_sphere_radius>
+		<collidershape>sphere</collidershape>
+		<kinematic>false</kinematic>	
+		<mass>0</mass>
+		<colgroup>4</colgroup>
+		<colmask>3</colmask>		
+	
+	dynamic:
+		<shape_sphere_radius>5</shape_sphere_radius>
+		<collidershape>sphere</collidershape>
+		<kinematic>false</kinematic>	
+		<colgroup>4</colgroup>
+		<colmask>3</colmask>
+		<mass>1</mass>
+	
+	kinematic:
+		<kinematic>true</kinematic>	
+		<colgroup>4</colgroup>
+		<colmask>3</colmask>
+		<tag>enemy</tag>
+		
+			
+-->
+
+
+<gos>	
+
+	<go name="playership">
+		<initial_speed>20</initial_speed>
+		<mesh>player.mesh</mesh>
+		<orientation>1,0,0,0</orientation>		
+		<shape_sphere_radius>5</shape_sphere_radius>
+		<collidershape>sphere</collidershape>
+		<kinematic>true</kinematic>	
+		<colgroup>1</colgroup>
+		<colmask>4</colmask>
+		<tag>player</tag>
+	</go>	
+	
+	<go name="ninja">
+		<initial_speed>20</initial_speed>
+		<mesh>ninja.mesh</mesh>
+		<scale>0.1,0.1,0.1</scale>
+		<orientation>0,0,1,0</orientation>	
+		<meshanimationstart>Idle1</meshanimationstart>
+		<meshanimationloop>true</meshanimationloop>
+	</go>	
+	
+	<go name="playershoot">
+		<initial_speed>30</initial_speed>
+		<mesh>shoot.mesh</mesh>
+		<scale>3,3,3</scale>
+		<shape_sphere_radius>2</shape_sphere_radius>
+		<collidershape>sphere</collidershape>
+		<kinematic>true</kinematic>	
+		<colgroup>2</colgroup>
+		<colmask>4</colmask>
+		<tag>playershoot</tag>
+		<sound_name>../resources/sounds/shoot.wav</sound_name>
+	</go>
+
+	<go name="enemyship2">
+		<initial_speed>20</initial_speed>
+		<mesh>enemy.mesh</mesh>
+		<scale>1,1,1</scale>
+		<orientation>0,0,1,0</orientation>		
+		<shape_sphere_radius>5</shape_sphere_radius>
+		<collidershape>sphere</collidershape>
+		<kinematic>true</kinematic>	
+		<colgroup>4</colgroup>
+		<colmask>3</colmask>
+		<tag>enemy</tag>		
+	</go>
+
+
+	<go name="enemyship">
+		<initial_speed>20</initial_speed>
+		<mesh>enemy.mesh</mesh>
+		<scale>1,1,1</scale>
+		<orientation>0,0,1,0</orientation>		
+		<shape_sphere_radius>5</shape_sphere_radius>
+		<collidershape>sphere</collidershape>
+		<kinematic>false</kinematic>	
+		<mass>0</mass>
+		<colgroup>4</colgroup>
+		<colmask>3</colmask>
+		<tag>enemy</tag>		
+	</go>	
+	
+	<go name="object1">
+		<mesh>enemy.mesh</mesh>
+		<scale>1,1,1</scale>
+		<orientation>0,0,1,0</orientation>		
+		<shape_sphere_radius>5</shape_sphere_radius>
+		<collidershape>sphere</collidershape>
+		<kinematic>false</kinematic>	
+		<colgroup>4</colgroup>
+		<colmask>3</colmask>
+		<tag>enemy</tag>
+		<mass>1</mass>
+	</go>	
+	
+	<go name="object_animnode">
+		<mesh>enemy.mesh</mesh>
+		<scale>1,1,1</scale>
+		<orientation>0,0,1,0</orientation>		
+		<shape_sphere_radius>5</shape_sphere_radius>
+		<collidershape>sphere</collidershape>
+		<kinematic>true</kinematic>	
+		<colgroup>4</colgroup>
+		<colmask>3</colmask>
+		<tag>enemy</tag>
+		<scenenodeanimation>player</scenenodeanimation>
+	</go>	
+		
+	
+	<go name="explosion">
+		<material>explosion1</material>
+		<scale>0.10,0.10,0.10</scale>
+		<sound_name>../resources/sounds/explosion.wav</sound_name>
+	</go>		
+</gos>
+
+		
